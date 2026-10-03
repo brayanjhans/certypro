@@ -4,11 +4,8 @@ import {
   Menu, 
   X, 
   Phone, 
-  GraduationCap, 
-  Award, 
-  Truck, 
-  BookOpen, 
-  Users, 
+  Mail,
+  MapPin,
   LogIn
 } from 'lucide-react';
 import { ROUTES, EXTERNAL_LINKS, getAssetUrl } from '../utils/routes';
@@ -26,8 +23,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAccessModal }) => {
     { label: 'NOSOTROS', path: ROUTES.NOSOTROS },
     { label: 'CURSOS', path: ROUTES.CURSOS },
     { label: 'CERTIFICADOS', path: ROUTES.CERTIFICADOS },
-    { label: 'ENVÍOS', path: ROUTES.ENVIOS },
     { label: 'CONTACTO', path: ROUTES.CONTACTO },
+    { label: 'ENVÍOS', path: ROUTES.ENVIOS },
   ];
 
   const isActive = (path: string) => {
@@ -36,76 +33,62 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAccessModal }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0e1d57] text-white shadow-md border-b border-[#162a72]">
-      {/* Top Banner Notice Bar */}
-      <div className="bg-[#09143c] text-xs py-1.5 px-4 text-slate-300 border-b border-[#122361] hidden sm:block">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
-              Matrículas abiertas 2025 - Cursos con certificación oficial
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a 
-              href={`tel:${EXTERNAL_LINKS.WHATSAPP_PHONE}`} 
-              className="flex items-center gap-1.5 hover:text-white transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#0c8897]" />
-              <span>{EXTERNAL_LINKS.WHATSAPP_DISPLAY}</span>
-            </a>
-            <span className="text-slate-500">|</span>
-            <span className="text-slate-300 font-medium">Jr. Manuel Estacio N° 100, San Miguel, Lima</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <header className="sticky top-0 z-50 w-full bg-[#021b41] border-b border-white/10 shadow-lg font-sans">
+      <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="flex items-center justify-between min-h-[96px] gap-4">
           
-          {/* Brand Logo */}
-          <Link 
-            to={ROUTES.HOME} 
-            className="flex items-center gap-3 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0c8897] rounded-lg"
-          >
-            <img 
-              src={getAssetUrl('/assets/logo.png')} 
-              alt="EduPRO360 - Formación Profesional" 
-              className="h-12 w-auto object-contain transition-transform hover:scale-[1.02]"
-              onError={(e) => {
-                // High-fidelity fallback if image fails
-                const target = e.currentTarget;
-                target.style.display = 'none';
-                if (target.nextElementSibling) {
-                  (target.nextElementSibling as HTMLElement).style.display = 'flex';
-                }
-              }}
-            />
-            {/* Fallback branded text in case of image failure */}
-            <div className="hidden items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-[#0c8897] flex items-center justify-center font-black text-xl text-white">
-                360°
+          {/* Left: Branding & Contact Lockup */}
+          <div className="flex items-center gap-5 shrink-0">
+            <Link 
+              to={ROUTES.HOME} 
+              className="flex items-center focus-visible:outline-none"
+            >
+              <img 
+                src={getAssetUrl('/assets/logo.png')} 
+                alt="EduPRO360 - Formación Profesional" 
+                className="h-[75px] sm:h-[88px] w-auto max-w-[280px] object-contain transition-transform hover:scale-[1.02]"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  target.style.display = 'none';
+                  if (target.nextElementSibling) {
+                    (target.nextElementSibling as HTMLElement).style.display = 'flex';
+                  }
+                }}
+              />
+              {/* Fallback */}
+              <div className="hidden items-center gap-2 text-white">
+                <span className="text-2xl font-black tracking-tight">EduPRO<span className="text-[#0c8897]">360</span></span>
               </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-black tracking-tight text-white leading-none">EduPRO<span className="text-[#0c8897]">360</span></span>
-                <span className="text-[10px] tracking-wider text-slate-300 uppercase">Formación Profesional</span>
+            </Link>
+
+            {/* Quick Contacts beside logo (like original live site) */}
+            <div className="hidden xl:flex flex-col text-xs text-[#d2d8e2] border-l border-white/15 pl-4 py-1 space-y-1">
+              <a 
+                href={`tel:${EXTERNAL_LINKS.WHATSAPP_PHONE}`}
+                className="flex items-center gap-1.5 hover:text-white transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#0c8897]" />
+                <span className="font-bold">{EXTERNAL_LINKS.WHATSAPP_DISPLAY}</span>
+              </a>
+              <div className="flex items-center gap-1.5 text-slate-400">
+                <MapPin className="w-3.5 h-3.5 text-[#0c8897]" />
+                <span>San Miguel, Lima - Perú</span>
               </div>
             </div>
-          </Link>
+          </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+          {/* Center/Right: Navigation Links */}
+          <nav className="hidden lg:flex items-center space-x-2 xl:space-x-4">
             {navLinks.map((item) => {
               const active = isActive(item.path);
               return (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`px-3 py-2 text-sm font-bold tracking-wide transition-all rounded-md whitespace-nowrap ${
+                  className={`px-2.5 py-2 text-[12px] font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
                     active
-                      ? 'text-[#0c8897] bg-[#122361] shadow-inner'
-                      : 'text-slate-100 hover:text-[#0c8897] hover:bg-[#122361]/60'
+                      ? 'text-white border-b-2 border-[#0c8897]'
+                      : 'text-[#d3d9e2] hover:text-white border-b-2 border-transparent'
                   }`}
                 >
                   {item.label}
@@ -114,50 +97,41 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAccessModal }) => {
             })}
           </nav>
 
-          {/* Action CTAs */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right Action: Iniciar Sesión / Aula Virtual */}
+          <div className="hidden sm:flex items-center gap-3 shrink-0">
             <button
               onClick={() => onOpenAccessModal ? onOpenAccessModal() : window.location.href = ROUTES.ACCESO}
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-black uppercase tracking-wider rounded-lg border border-[#0c8897] text-[#0c8897] hover:bg-[#0c8897] hover:text-white transition-all whitespace-nowrap shadow-sm cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#0c8897] to-[#0a7481] hover:brightness-110 text-white font-extrabold text-xs uppercase tracking-wider shadow-md transition-all cursor-pointer hover:-translate-y-0.5"
             >
-              <LogIn className="w-4 h-4" />
+              <LogIn className="w-3.5 h-3.5 text-[#ffc24b]" />
               <span>Aula Virtual</span>
             </button>
-
-            <a
-              href={EXTERNAL_LINKS.WHATSAPP_URL('Hola EduPRO360, deseo inscribirme en un curso.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-black uppercase tracking-wider rounded-lg bg-gradient-to-r from-[#0c8897] to-[#0a7380] text-white hover:brightness-110 transition-all shadow-md whitespace-nowrap cursor-pointer"
-            >
-              <GraduationCap className="w-4 h-4 text-[#ffc24b]" />
-              <span>Inscribirme</span>
-            </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={() => onOpenAccessModal ? onOpenAccessModal() : window.location.href = ROUTES.ACCESO}
-              className="px-2.5 py-1.5 text-xs font-bold rounded border border-[#0c8897] text-[#0c8897] sm:hidden"
+              className="px-2.5 py-1.5 text-xs font-bold rounded-lg bg-[#0c8897] text-white sm:hidden"
             >
-              Aula Virtual
+              Aula
             </button>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-slate-200 hover:text-white hover:bg-[#122361] focus:outline-none focus:ring-2 focus:ring-[#0c8897]"
-              aria-label="Abrir menú"
+              className="p-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10"
+              aria-label="Abrir menú de navegación"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
             </button>
           </div>
+
         </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#09143c] border-b border-[#162a72] px-4 pt-2 pb-6 space-y-2 animate-fadeIn">
+        <div className="lg:hidden bg-[#011432] border-t border-white/10 px-5 pt-3 pb-6 space-y-2">
           {navLinks.map((item) => {
             const active = isActive(item.path);
             return (
@@ -165,10 +139,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAccessModal }) => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-3 py-2.5 rounded-md text-base font-bold tracking-wide ${
+                className={`block px-3 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider ${
                   active
                     ? 'text-white bg-[#0c8897]'
-                    : 'text-slate-200 hover:text-white hover:bg-[#122361]'
+                    : 'text-[#d3d9e2] hover:text-white hover:bg-white/5'
                 }`}
               >
                 {item.label}
@@ -176,28 +150,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAccessModal }) => {
             );
           })}
 
-          <div className="pt-4 border-t border-[#162a72] flex flex-col gap-2.5">
+          <div className="pt-4 border-t border-white/10 space-y-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 if (onOpenAccessModal) onOpenAccessModal();
                 else window.location.href = ROUTES.ACCESO;
               }}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-lg border border-[#0c8897] text-[#0c8897] font-bold text-sm bg-[#0e1d57]"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#0c8897] text-white font-extrabold text-xs uppercase tracking-wider shadow-md"
             >
-              <LogIn className="w-4 h-4" />
+              <LogIn className="w-4 h-4 text-[#ffc24b]" />
               <span>Acceso a Aula Virtual</span>
             </button>
-
-            <a
-              href={EXTERNAL_LINKS.WHATSAPP_URL()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-[#0c8897] text-white font-bold text-sm shadow-md"
-            >
-              <Phone className="w-4 h-4 text-[#ffc24b]" />
-              <span>Contactar por WhatsApp</span>
-            </a>
           </div>
         </div>
       )}

@@ -5,155 +5,140 @@ import {
   Phone, 
   Mail, 
   Clock, 
-  ShieldCheck, 
-  ExternalLink,
-  BookOpen,
-  Award,
-  Truck
+  ShieldCheck
 } from 'lucide-react';
 import { ROUTES, EXTERNAL_LINKS, getAssetUrl } from '../utils/routes';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#09143c] text-slate-300 border-t border-[#122361]">
+    <footer 
+      className="text-slate-300 font-sans border-t-[3px] border-[#0c8897]/70"
+      style={{
+        background: 'linear-gradient(180deg, #061421, #04111e)',
+      }}
+    >
       {/* Upper Main Footer Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-[1300px] mx-auto px-6 py-14 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           
-          {/* Col 1: Institutional & Identity */}
+          {/* Col 1: Identity & Contacts */}
           <div className="space-y-4">
             <Link to={ROUTES.HOME} className="inline-block">
               <img
                 src={getAssetUrl('/assets/logo.png')}
                 alt="EduPRO360"
-                className="h-12 w-auto object-contain brightness-105"
+                className="h-14 w-auto object-contain brightness-105"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
               />
             </Link>
 
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              EduPRO360 es una plataforma de educación virtual dedicada a la formación integral de profesionales en diversas disciplinas, con programas de alta calidad, metodologías prácticas y certificaciones con valor curricular.
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-[340px]">
+              EduPRO360 brinda formación profesional mediante cursos y programas orientados al desarrollo de nuevas competencias y respaldo curricular con valor laboral en todo el Perú.
             </p>
 
-            <div className="pt-2 flex items-center gap-3">
-              <div className="text-[11px] text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10">
-                <span className="font-bold text-white">RUC:</span> 20612348911 | Edupro360 E.I.R.L.
-              </div>
-            </div>
-          </div>
-
-          {/* Col 2: Enlaces Rápidos */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-black text-white uppercase tracking-wider border-l-2 border-[#0c8897] pl-2.5">
-              Navegación
-            </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm">
-              <li>
-                <Link to={ROUTES.HOME} className="hover:text-[#0c8897] transition-colors flex items-center gap-1.5">
-                  <span>› Inicio</span>
-                </Link>
-              </li>
-              <li>
-                <Link to={ROUTES.NOSOTROS} className="hover:text-[#0c8897] transition-colors flex items-center gap-1.5">
-                  <span>› Nosotros y Filosofía</span>
-                </Link>
-              </li>
-              <li>
-                <Link to={ROUTES.CURSOS} className="hover:text-[#0c8897] transition-colors flex items-center gap-1.5">
-                  <span>› Catálogo de Cursos</span>
-                </Link>
-              </li>
-              <li>
-                <Link to={ROUTES.CERTIFICADOS} className="hover:text-[#0c8897] transition-colors flex items-center gap-1.5">
-                  <span>› Verificación de Certificados</span>
-                </Link>
-              </li>
-              <li>
-                <Link to={ROUTES.ENVIOS} className="hover:text-[#0c8897] transition-colors flex items-center gap-1.5">
-                  <span>› Seguimiento de Envíos</span>
-                </Link>
-              </li>
-              <li>
-                <Link to={ROUTES.CONTACTO} className="hover:text-[#0c8897] transition-colors flex items-center gap-1.5">
-                  <span>› Contáctanos</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 3: Programas y Áreas */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-black text-white uppercase tracking-wider border-l-2 border-[#0c8897] pl-2.5">
-              Especialidades
-            </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
-              <li>• Seguridad y Salud en el Trabajo (SSOMA)</li>
-              <li>• Ofimática Profesional Word, Excel y Access</li>
-              <li>• Microsoft Power BI y Análisis de Datos</li>
-              <li>• Trabajos de Alto Riesgo (Altura, Confinados)</li>
-              <li>• AutoCAD 2D/3D y Diseño Técnico</li>
-              <li>• Gestión Pública y Contrataciones</li>
-              <li>• Animación y Modelado con Blender</li>
-            </ul>
-          </div>
-
-          {/* Col 4: Contacto y Ubicación */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-black text-white uppercase tracking-wider border-l-2 border-[#0c8897] pl-2.5">
-              Contacto y Atención
-            </h4>
-            <div className="space-y-3 text-xs sm:text-sm">
-              <div className="flex items-start gap-2.5">
+            <div className="space-y-2 text-xs text-slate-300 pt-2">
+              <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#0c8897] shrink-0 mt-0.5" />
                 <span>{EXTERNAL_LINKS.LOCATION_ADDRESS}</span>
               </div>
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#0c8897] shrink-0" />
-                <a 
-                  href={`tel:${EXTERNAL_LINKS.WHATSAPP_PHONE}`}
-                  className="hover:text-[#0c8897] transition-colors"
-                >
+                <a href={`tel:${EXTERNAL_LINKS.WHATSAPP_PHONE}`} className="hover:text-white transition-colors">
                   {EXTERNAL_LINKS.WHATSAPP_DISPLAY}
                 </a>
               </div>
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#0c8897] shrink-0" />
-                <a 
-                  href={`mailto:${EXTERNAL_LINKS.EMAIL}`}
-                  className="hover:text-[#0c8897] transition-colors"
-                >
+                <a href={`mailto:${EXTERNAL_LINKS.EMAIL}`} className="hover:text-white transition-colors">
                   {EXTERNAL_LINKS.EMAIL}
                 </a>
               </div>
-              <div className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-[#0c8897] shrink-0 mt-0.5" />
-                <div>
-                  <p>Lun - Vie: 9:00 am - 7:00 pm</p>
-                  <p>Sábados: 9:00 am - 1:00 pm</p>
-                </div>
-              </div>
             </div>
+          </div>
 
-            {/* Libro de Reclamaciones */}
-            <div className="pt-2">
-              <Link
-                to={ROUTES.CONTACTO}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-300 transition-colors"
-              >
-                <ShieldCheck className="w-4 h-4 text-[#ffc24b]" />
-                <span>Libro de Reclamaciones Virtual</span>
-              </Link>
+          {/* Col 2: Enlaces de Navegación */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-black text-white uppercase tracking-wider border-l-2 border-[#0c8897] pl-2.5">
+              Navegación
+            </h4>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
+              <li>
+                <Link to={ROUTES.HOME} className="hover:text-white transition-colors">
+                  › INICIO
+                </Link>
+              </li>
+              <li>
+                <Link to={ROUTES.NOSOTROS} className="hover:text-white transition-colors">
+                  › NOSOTROS
+                </Link>
+              </li>
+              <li>
+                <Link to={ROUTES.CURSOS} className="hover:text-white transition-colors">
+                  › CURSOS
+                </Link>
+              </li>
+              <li>
+                <Link to={ROUTES.CERTIFICADOS} className="hover:text-white transition-colors">
+                  › CERTIFICADOS
+                </Link>
+              </li>
+              <li>
+                <Link to={ROUTES.CONTACTO} className="hover:text-white transition-colors">
+                  › CONTACTO
+                </Link>
+              </li>
+              <li>
+                <Link to={ROUTES.ENVIOS} className="hover:text-white transition-colors">
+                  › ENVÍOS
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Planes y Servicios */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-black text-white uppercase tracking-wider border-l-2 border-[#0c8897] pl-2.5">
+              Planes y Servicios
+            </h4>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
+              <li>• Plan BÁSICO (30 cursos + diplomados)</li>
+              <li>• Plan PREMIUM (Acceso Total 1 año)</li>
+              <li>• Plan PROFESIONAL (Diplomados ilimitados)</li>
+              <li>• Validación digital de certificados con QR</li>
+              <li>• Envíos físicos a domicilio Olva y Shalom</li>
+              <li>• Convenio Ilustre Colegio de Abogados</li>
+            </ul>
+          </div>
+
+          {/* Col 4: Legal & Reclamaciones */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-black text-white uppercase tracking-wider border-l-2 border-[#0c8897] pl-2.5">
+              Información Legal
+            </h4>
+            <div className="text-xs text-slate-400 space-y-3">
+              <p>RUC: 20612348911 | Edupro360 E.I.R.L.</p>
+              <p>Empresa dedicada a la educación continua y capacitación laboral de adultos.</p>
+              
+              <div className="pt-2">
+                <Link
+                  to={ROUTES.CONTACTO}
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-200 transition-colors"
+                >
+                  <ShieldCheck className="w-4 h-4 text-[#ffc24b]" />
+                  <span>Libro de Reclamaciones</span>
+                </Link>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* Lower Copyright & Legal Bar */}
-      <div className="bg-[#050c26] py-6 border-t border-[#122361] text-xs text-slate-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      {/* Copyright Bar */}
+      <div className="bg-[#030d17] py-6 border-t border-white/10 text-xs text-slate-400">
+        <div className="max-w-[1300px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} EduPRO360. Todos los derechos reservados.</p>
           <div className="flex items-center gap-6">
             <Link to={ROUTES.TERMINOS} className="hover:text-white transition-colors">
@@ -163,15 +148,6 @@ export const Footer: React.FC = () => {
             <Link to={ROUTES.PRIVACIDAD} className="hover:text-white transition-colors">
               Política de Privacidad
             </Link>
-            <span>•</span>
-            <a 
-              href={EXTERNAL_LINKS.WHATSAPP_URL()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#0c8897] hover:underline"
-            >
-              Soporte al Alumno
-            </a>
           </div>
         </div>
       </div>
