@@ -1,0 +1,6 @@
+{
+  "name": "EduPRO360 - Formación Profesional",
+  "description": "Plataforma de formación profesional con cursos, especializaciones, certificación digital con código QR, validación de certificados y aula virtual.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
